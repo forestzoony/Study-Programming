@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdboo.h>
 #include <stdlib.h>
-
+"""
 long long solution(int a, int b)){
     long long answer =0;
     int max;
@@ -18,5 +18,6 @@ long long solution(int a, int b)){
         answer += i;
     }
     return answer;
-    
+
 }
+"""
