@@ -1,0 +1,75 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+}
+
+h2 {
+    font-size: 110px;
+    color: white;
+    text-align: center;
+    border-right: 100px;
+    margin-top: 100px;
+    text-shadow: 3px 3px 3px gray;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-size: 60% 90%;
+    background-color: #ECE0CD;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 1px gray;
+    font-size: 35px;
+}
+
+ul li {
+    list-style: none;
+}
+
+div {
+    width: 600px;
+    height: 210px;
+    border: dashed 5px white;
+    margin-top: 200px;
+    align-items: center;
+    text-shadow: 1px 1px 1px gray;
+}
+
+table {
+    margin-top: 10px;
+}
+
+#capsLockMsg {
+    display: none;
+    color: red;
+    font-size: 10px;
+}
+
+.mem a:hover {
+    color: red;
+}
+
+.capsLockMsg {
+    display: none;
+    color: red;
+    font-size: 10px;
+}
+
+#btn {
+    width: 100px;
+    height: 55px;
+    background: white;
+    border: solid 2px white;
+    border-radius: 10%
+}
+
+.inph {
+    height: 25px;
+}
