@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>지도 생성하기</title>
+</head>
+<body>
+<!-- 지도를 표시할 div 입니다 -->
+<div id="map" style="width:100%;height:1300px;"></div>
+
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=3597ac78129eab0fe7d5d3ed58047427"></script>
+
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(36.850402, 126.619147), // 지도의 중심좌표
+        level: 8//지도의 확대 레벨
+    };
+
+// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+var map = new kakao.maps.Map(mapContainer, mapOption);
+
+// 마커 배열 정의(구간)
+var markers = [
+    { position: new kakao.maps.LatLng(36.850402, 126.619147), name: '당진JC' },
+    { position: new kakao.maps.LatLng(36.823430, 126.647469), name: '면천IC' },
+    { position: new kakao.maps.LatLng(36.761898, 126.705171), name: '고덕IC' },
+    { position: new kakao.maps.LatLng(36.677070, 126.775389), name: '예산수덕IC' },
+    { position: new kakao.maps.LatLng(36.593616, 126.870914), name: '신양IC' },
+    { position: new kakao.maps.LatLng(36.565142, 126.975655), name: '유구IC' },
+    { position: new kakao.maps.LatLng(36.494871, 127.024199), name: '마곡사IC' },
+    { position: new kakao.maps.LatLng(36.485620, 127.062448), name: '서공주JC'},
+    { position: new kakao.maps.LatLng(36.485626, 127.091833), name: '공주JC' },
+    { position: new kakao.maps.LatLng(36.491454, 127.121568), name: '공주IC' },
+    { position: new kakao.maps.LatLng(36.494799, 127.195096), name: '서세종IC' },
+    { position: new kakao.maps.LatLng(36.424537, 127.291309), name: '남세종IC' },
+    { position: new kakao.maps.LatLng(36.388822, 127.339872), name: '유성JC' }
+    
+];
+
+// 추가할 사고 데이터 마커 배열 정의(사고데이터)
+var markers2 = [
+    { position: new kakao.maps.LatLng(36.4279, 127.2883), name: '사고장소1' },
+    { position: new kakao.maps.LatLng(36.714, 126.7591), name: '사고장소2' },
+    { position: new kakao.maps.LatLng(36.391, 127.3345), name: '사고장소3' },
+    { position: new kakao.maps.LatLng(36.391, 127.3345), name: '사고장소4' },
+    { position: new kakao.maps.LatLng(36.7674, 126.7017), name: '사고장소5' },
+    { position: new kakao.maps.LatLng(36.7792, 126.6934), name: '사고장소6' },
+    { position: new kakao.maps.LatLng(36.4856, 127.0917), name: '사고장소7' },
+    { position: new kakao.maps.LatLng(36.4856, 127.0917), name: '사고장소8' },
+    { position: new kakao.maps.LatLng(36.7806, 126.692), name: '사고장소9' },
+    { position: new kakao.maps.LatLng(36.7806, 126.692), name: '사고장소10' }
+];
+
+
+
+// 마커 및 인포윈도우 생성 및 이벤트 등록
+markers.forEach(function(markerInfo) {
+    var marker = new kakao.maps.Marker({
+        position: markerInfo.position,
+        map: map
+    });
+
+    var iwContent = '<div style="padding:5px;">' + markerInfo.name + '</div>';
+    var infowindow = new kakao.maps.InfoWindow({
+        content: iwContent
+    });
+
+    kakao.maps.event.addListener(marker, 'mouseover', function() {
+        infowindow.open(map, marker);
+    });
+
+    kakao.maps.event.addListener(marker, 'mouseout', function() {
+        infowindow.close();
+    });
+});
+
+// 마커 및 인포윈도우 생성 및 이벤트 등록
+markers2.forEach(function(marker2Info) {
+    var marker2 = new kakao.maps.Marker({
+        position: marker2Info.position,
+        map: map,
+        image: new kakao.maps.MarkerImage("car.png", new kakao.maps.Size(30, 30))
+    });
+
+    var iwContent = '<div style="padding:5px;">' + marker2Info.name + '</div>';
+    var infowindow = new kakao.maps.InfoWindow({
+        content: iwContent
+    });
+
+    kakao.maps.event.addListener(marker2, 'mouseover', function() {
+        infowindow.open(map, marker2);
+    });
+
+    kakao.maps.event.addListener(marker2, 'mouseout', function() {
+        infowindow.close();
+    });
+});
+
+</script>
+</body>
+</html>
